@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visuals | Abdul Muhit Razin</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
         :root {
@@ -53,12 +51,19 @@
 
         @media (pointer: fine) { #cursor { display: block; } }
 
-        /* Custom Logo Illustration */
-        .site-logo {
+        /* Custom Logo Illustration & Top Nav */
+        .site-header {
             position: absolute;
             top: 40px;
             left: 6%;
+            right: 6%;
             z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-logo {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -81,8 +86,30 @@
             background: var(--accent);
         }
 
+        /* Portfolio Button Styles */
+        .portfolio-btn {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s var(--ease);
+            background: transparent;
+        }
+
+        .portfolio-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
         main {
-            padding: 120px 6% 80px 6%;
+            padding: 160px 6% 80px 6%;
             max-width: 1600px;
             margin: 0 auto;
         }
@@ -273,11 +300,12 @@
         }
 
         @media (max-width: 768px) {
-            main { padding-top: 100px; }
+            main { padding-top: 140px; }
             .video-grid { grid-template-columns: 1fr; }
             .header-strip { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .site-logo { top: 25px; }
+            .site-header { top: 25px; flex-direction: row; }
             .feature-icons { grid-template-columns: 1fr; }
+            .portfolio-btn { font-size: 8px; padding: 8px 12px; }
         }
 
         .footer-line {
@@ -290,7 +318,13 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             border-top: 1px solid var(--border);
-            margin-top: 80px;
+            margin-top: 40px;
+        }
+
+        .bottom-action {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 60px;
         }
     </style>
 </head>
@@ -298,13 +332,17 @@
 
     <div id="cursor"></div>
 
-    <header class="site-logo">
-        <div class="logo-mark"></div>
-        <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;">RS_LABS</span>
+    <header class="site-header">
+        <div class="site-logo">
+            <div class="logo-mark"></div>
+            <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;">RS_LABS</span>
+        </div>
+        <a href="http://rajin.work.gd/" class="portfolio-btn">
+            <i class="bi bi-arrow-left"></i> BACK_TO_HOME
+        </a>
     </header>
 
     <main>
-        <!-- Hero Featured Video -->
         <section class="hero-showcase">
             <div class="hero-video-wrapper">
                 <div class="decoration-crosshair ch-tl"></div>
@@ -364,7 +402,6 @@
             </div>
         </section>
 
-        <!-- Secondary Grid -->
         <div class="header-strip">
             <div class="header-title">
                 <h1>VISUAL<br><span class="outline">ARCHIVE</span></h1>
@@ -376,9 +413,14 @@
         </div>
 
         <div class="video-grid" id="videoGrid">
-            <!-- Populated via JS -->
-        </div>
+            </div>
     </main>
+
+    <div class="bottom-action">
+        <a href="http://rajin.work.gd/" class="portfolio-btn">
+            VIEW_FULL_PORTFOLIO <i class="bi bi-arrow-right"></i>
+        </a>
+    </div>
 
     <div class="footer-line">
         <span>© 2024 RS_STUDIO</span>
@@ -428,7 +470,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('.video-card, .hero-video-wrapper, .site-logo, .icon-item').forEach(el => {
+        document.querySelectorAll('.video-card, .hero-video-wrapper, .site-logo, .icon-item, .portfolio-btn').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(6)');
             el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
         });

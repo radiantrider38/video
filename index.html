@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visuals | Abdul Muhit Razin</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --bg: #030303;
+            --accent: #c8f04d;
+            --text-hi: #ffffff;
+            --text-mid: #888888;
+            --text-lo: #1a1a1a;
+            --border: rgba(255,255,255,0.08);
+            --font-display: 'Playfair Display', serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        @media (pointer: fine) {
+            * { cursor: none; }
+        }
+
+        body { 
+            background: var(--bg); 
+            color: var(--text-hi); 
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            width: 100vw;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-blend-mode: overlay;
+        }
+
+        #cursor {
+            position: fixed;
+            width: 8px; height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s var(--ease);
+            display: none;
+        }
+
+        @media (pointer: fine) { #cursor { display: block; } }
+
+        /* Custom Logo Illustration */
+        .site-logo {
+            position: absolute;
+            top: 40px;
+            left: 6%;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-mark {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--accent);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-mark::before {
+            content: '';
+            width: 60%;
+            height: 60%;
+            background: var(--accent);
+        }
+
+        main {
+            padding: 120px 6% 80px 6%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Hero Highlight Section */
+        .hero-showcase {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 60px;
+            margin-bottom: 120px;
+            align-items: center;
+        }
+
+        .hero-video-wrapper {
+            position: relative;
+            border: 1px solid var(--border);
+            padding: 12px;
+            background: rgba(255,255,255,0.01);
+            width: 100%;
+        }
+
+        /* Technical Illustrations */
+        .decoration-crosshair {
+            position: absolute;
+            width: 40px; height: 40px;
+            border: 1px solid var(--accent);
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        .ch-tl { top: -5px; left: -5px; border-right: 0; border-bottom: 0; }
+        .ch-tr { top: -5px; right: -5px; border-left: 0; border-bottom: 0; }
+        .ch-bl { bottom: -5px; left: -5px; border-right: 0; border-top: 0; }
+        .ch-br { bottom: -5px; right: -5px; border-left: 0; border-top: 0; }
+
+        .hero-description {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .description-content {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        /* Animated Waveform Illustration */
+        .waveform-illus {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 40px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .wave-bar {
+            width: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            animation: wave 1.2s infinite ease-in-out;
+        }
+
+        @keyframes wave {
+            0%, 100% { height: 10px; }
+            50% { height: 35px; }
+        }
+
+        .hero-description h2 {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.1;
+            font-weight: 900;
+        }
+
+        .hero-description p {
+            font-size: 15px;
+            color: var(--text-mid);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .feature-icons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .icon-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: var(--text-hi);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .icon-item i {
+            font-size: 18px;
+            color: var(--accent);
+        }
+
+        /* Video Grid Styling */
+        .header-strip {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .header-title h1 {
+            font-family: var(--font-display);
+            font-size: clamp(30px, 6vw, 60px);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+        }
+
+        .header-title .outline {
+            color: transparent;
+            -webkit-text-stroke: 1px var(--text-hi);
+            font-style: italic;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .video-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            position: relative;
+            transition: 0.5s var(--ease);
+            overflow: hidden;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: 0;
+            transition: 0.8s var(--ease);
+        }
+
+        .video-card .video-container iframe {
+            pointer-events: none;
+        }
+
+        .video-card:hover { border-color: var(--accent); }
+
+        .card-footer {
+            padding: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 8px;
+            color: var(--text-mid);
+            background: #080808;
+        }
+
+        .click-shield {
+            position: absolute; inset: 0; z-index: 5; cursor: pointer;
+        }
+
+        .active iframe { pointer-events: auto !important; }
+
+        /* Responsive Logic */
+        @media (max-width: 1200px) {
+            .hero-showcase { grid-template-columns: 1fr; gap: 40px; }
+            .video-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-description { max-width: 600px; }
+        }
+
+        @media (max-width: 768px) {
+            main { padding-top: 100px; }
+            .video-grid { grid-template-columns: 1fr; }
+            .header-strip { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .site-logo { top: 25px; }
+            .feature-icons { grid-template-columns: 1fr; }
+        }
+
+        .footer-line {
+            padding: 40px 6%;
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 8px;
+            color: var(--text-mid);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+
+    <header class="site-logo">
+        <div class="logo-mark"></div>
+        <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;">RS_LABS</span>
+    </header>
+
+    <main>
+        <!-- Hero Featured Video -->
+        <section class="hero-showcase">
+            <div class="hero-video-wrapper">
+                <div class="decoration-crosshair ch-tl"></div>
+                <div class="decoration-crosshair ch-tr"></div>
+                <div class="decoration-crosshair ch-bl"></div>
+                <div class="decoration-crosshair ch-br"></div>
+                
+                <div class="video-container">
+                    <iframe 
+                        id="heroIframe"
+                        src="https://player.vimeo.com/video/1172109204?title=0&byline=0&portrait=0" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="hero-description">
+                <div class="status-dot" style="display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:9px; color:var(--accent); text-transform:uppercase;">
+                    <span style="width:6px; height:6px; background:var(--accent); border-radius:50%;"></span>
+                    Creative Vision // 2024
+                </div>
+                
+                <h2>THE ART OF <br><span style="color:var(--accent)">MOTION NARRATIVE</span></h2>
+                
+                <div class="description-content">
+                    <div class="waveform-illus">
+                        <div class="wave-bar" style="animation-delay: 0.1s"></div>
+                        <div class="wave-bar" style="animation-delay: 0.3s"></div>
+                        <div class="wave-bar" style="animation-delay: 0.2s"></div>
+                        <div class="wave-bar" style="animation-delay: 0.5s"></div>
+                        <div class="wave-bar" style="animation-delay: 0.4s"></div>
+                    </div>
+                    <p>
+                        Passionate about the intersection of high-fidelity documentary and technical motion design. I specialize in crafting visceral After Effects sequences and cinematic documentaries that define brand identity through movement.
+                    </p>
+                </div>
+
+                <div class="feature-icons">
+                    <div class="icon-item">
+                        <i class="bi bi-layers"></i>
+                        <span>Ae Composition</span>
+                    </div>
+                    <div class="icon-item">
+                        <i class="bi bi-camera-reels"></i>
+                        <span>Documentary</span>
+                    </div>
+                    <div class="icon-item">
+                        <i class="bi bi-bezier2"></i>
+                        <span>Motion Track</span>
+                    </div>
+                    <div class="icon-item">
+                        <i class="bi bi-palette"></i>
+                        <span>Color Grade</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secondary Grid -->
+        <div class="header-strip">
+            <div class="header-title">
+                <h1>VISUAL<br><span class="outline">ARCHIVE</span></h1>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 9px; color: var(--text-mid); text-align: right;">
+                [BATCH_REF: ARCHIVE_9]<br>
+                24.36° N // 88.62° E
+            </div>
+        </div>
+
+        <div class="video-grid" id="videoGrid">
+            <!-- Populated via JS -->
+        </div>
+    </main>
+
+    <div class="footer-line">
+        <span>© 2024 RS_STUDIO</span>
+        <span>ENCRYPTED_STREAM_ACTIVE</span>
+    </div>
+
+    <script>
+        const videoIds = [
+            '1172106520', '1172106352', '1172106299', 
+            '1172106067', '1172105159', '1172105095', 
+            '1172104996', '1172104845', '1172104958'
+        ];
+
+        const grid = document.getElementById('videoGrid');
+
+        // Setup Grid
+        videoIds.forEach((id) => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.innerHTML = `
+                <div class="click-shield"></div>
+                <div class="video-container">
+                    <iframe 
+                        src="https://player.vimeo.com/video/${id}?background=1&autoplay=0&loop=1&muted=1" 
+                        allow="autoplay; fullscreen">
+                    </iframe>
+                </div>
+                <div class="card-footer">
+                    <span>NODE_${id.slice(-4)}</span>
+                    <i class="bi bi-play-circle-fill" style="font-size: 14px; color: var(--accent);"></i>
+                </div>
+            `;
+            
+            card.querySelector('.click-shield').addEventListener('click', function() {
+                this.style.display = 'none';
+                card.classList.add('active');
+                card.querySelector('iframe').src = `https://player.vimeo.com/video/${id}?autoplay=1`;
+            });
+
+            grid.appendChild(card);
+        });
+
+        // Cursor logic
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('.video-card, .hero-video-wrapper, .site-logo, .icon-item').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(6)');
+            el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+        });
+    </script>
+</body>
+</html>

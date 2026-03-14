@@ -51,7 +51,6 @@
 
         @media (pointer: fine) { #cursor { display: block; } }
 
-        /* Custom Logo Illustration & Top Nav */
         .site-header {
             position: absolute;
             top: 40px;
@@ -86,7 +85,6 @@
             background: var(--accent);
         }
 
-        /* Portfolio Button Styles */
         .portfolio-btn {
             font-family: var(--font-mono);
             font-size: 10px;
@@ -114,12 +112,11 @@
             margin: 0 auto;
         }
 
-        /* Hero Highlight Section */
         .hero-showcase {
             display: grid;
             grid-template-columns: 1fr 400px;
             gap: 60px;
-            margin-bottom: 120px;
+            margin-bottom: 80px;
             align-items: center;
         }
 
@@ -131,7 +128,6 @@
             width: 100%;
         }
 
-        /* Technical Illustrations */
         .decoration-crosshair {
             position: absolute;
             width: 40px; height: 40px;
@@ -157,7 +153,6 @@
             align-items: flex-start;
         }
 
-        /* Animated Waveform Illustration */
         .waveform-illus {
             display: flex;
             align-items: flex-end;
@@ -193,28 +188,37 @@
             font-weight: 300;
         }
 
-        .feature-icons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border);
+        /* Sub Hero Showcase - The New Video */
+        .sub-hero-showcase {
+            margin-bottom: 120px;
         }
 
-        .icon-item {
+        .sub-hero-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--accent);
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-family: var(--font-mono);
-            font-size: 9px;
-            color: var(--text-hi);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            gap: 10px;
         }
 
-        .icon-item i {
-            font-size: 18px;
-            color: var(--accent);
+        .sub-hero-label span {
+            width: 30px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .sub-hero-video {
+            width: 100%;
+            border: 1px solid var(--border);
+            padding: 10px;
+            background: rgba(255,255,255,0.01);
+            transition: border-color 0.4s var(--ease);
+        }
+
+        .sub-hero-video:hover {
+            border-color: var(--accent);
         }
 
         /* Video Grid Styling */
@@ -269,10 +273,6 @@
             transition: 0.8s var(--ease);
         }
 
-        .video-card .video-container iframe {
-            pointer-events: none;
-        }
-
         .video-card:hover { border-color: var(--accent); }
 
         .card-footer {
@@ -292,20 +292,15 @@
 
         .active iframe { pointer-events: auto !important; }
 
-        /* Responsive Logic */
         @media (max-width: 1200px) {
             .hero-showcase { grid-template-columns: 1fr; gap: 40px; }
             .video-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-description { max-width: 600px; }
         }
 
         @media (max-width: 768px) {
             main { padding-top: 140px; }
             .video-grid { grid-template-columns: 1fr; }
             .header-strip { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .site-header { top: 25px; flex-direction: row; }
-            .feature-icons { grid-template-columns: 1fr; }
-            .portfolio-btn { font-size: 8px; padding: 8px 12px; }
         }
 
         .footer-line {
@@ -343,65 +338,48 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero-showcase">
             <div class="hero-video-wrapper">
                 <div class="decoration-crosshair ch-tl"></div>
                 <div class="decoration-crosshair ch-tr"></div>
                 <div class="decoration-crosshair ch-bl"></div>
                 <div class="decoration-crosshair ch-br"></div>
-                
                 <div class="video-container">
-                    <iframe 
-                        id="heroIframe"
-                        src="https://player.vimeo.com/video/1172109204?title=0&byline=0&portrait=0" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
+                    <iframe src="https://player.vimeo.com/video/1172109204?title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
                 </div>
             </div>
 
             <div class="hero-description">
-                <div class="status-dot" style="display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:9px; color:var(--accent); text-transform:uppercase;">
+                <div style="display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:9px; color:var(--accent); text-transform:uppercase;">
                     <span style="width:6px; height:6px; background:var(--accent); border-radius:50%;"></span>
                     Creative Vision // 2024
                 </div>
-                
                 <h2>THE ART OF <br><span style="color:var(--accent)">MOTION NARRATIVE</span></h2>
-                
                 <div class="description-content">
                     <div class="waveform-illus">
                         <div class="wave-bar" style="animation-delay: 0.1s"></div>
                         <div class="wave-bar" style="animation-delay: 0.3s"></div>
                         <div class="wave-bar" style="animation-delay: 0.2s"></div>
-                        <div class="wave-bar" style="animation-delay: 0.5s"></div>
-                        <div class="wave-bar" style="animation-delay: 0.4s"></div>
                     </div>
-                    <p>
-                        Passionate about the intersection of high-fidelity documentary and technical motion design. I specialize in crafting visceral After Effects sequences and cinematic documentaries that define brand identity through movement.
-                    </p>
-                </div>
-
-                <div class="feature-icons">
-                    <div class="icon-item">
-                        <i class="bi bi-layers"></i>
-                        <span>Ae Composition</span>
-                    </div>
-                    <div class="icon-item">
-                        <i class="bi bi-camera-reels"></i>
-                        <span>Documentary</span>
-                    </div>
-                    <div class="icon-item">
-                        <i class="bi bi-bezier2"></i>
-                        <span>Motion Track</span>
-                    </div>
-                    <div class="icon-item">
-                        <i class="bi bi-palette"></i>
-                        <span>Color Grade</span>
-                    </div>
+                    <p>Passionate about high-fidelity documentary and technical motion design. I specialize in cinematic After Effects sequences that define brand identity.</p>
                 </div>
             </div>
         </section>
 
+        <!-- New Sub-Hero Video (Second Largest) -->
+        <section class="sub-hero-showcase">
+            <div class="sub-hero-label">
+                <span></span> FEATURED_WORK // NODE_5572
+            </div>
+            <div class="sub-hero-video">
+                <div class="video-container">
+                    <iframe src="https://player.vimeo.com/video/1173550572?title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Archive Grid -->
         <div class="header-strip">
             <div class="header-title">
                 <h1>VISUAL<br><span class="outline">ARCHIVE</span></h1>
@@ -412,8 +390,7 @@
             </div>
         </div>
 
-        <div class="video-grid" id="videoGrid">
-            </div>
+        <div class="video-grid" id="videoGrid"></div>
     </main>
 
     <div class="bottom-action">
@@ -435,18 +412,13 @@
         ];
 
         const grid = document.getElementById('videoGrid');
-
-        // Setup Grid
         videoIds.forEach((id) => {
             const card = document.createElement('div');
             card.className = 'video-card';
             card.innerHTML = `
                 <div class="click-shield"></div>
                 <div class="video-container">
-                    <iframe 
-                        src="https://player.vimeo.com/video/${id}?background=1&autoplay=0&loop=1&muted=1" 
-                        allow="autoplay; fullscreen">
-                    </iframe>
+                    <iframe src="https://player.vimeo.com/video/${id}?background=1&autoplay=0&loop=1&muted=1" allow="autoplay; fullscreen"></iframe>
                 </div>
                 <div class="card-footer">
                     <span>NODE_${id.slice(-4)}</span>
@@ -459,18 +431,16 @@
                 card.classList.add('active');
                 card.querySelector('iframe').src = `https://player.vimeo.com/video/${id}?autoplay=1`;
             });
-
             grid.appendChild(card);
         });
 
-        // Cursor logic
         const cursor = document.getElementById('cursor');
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('.video-card, .hero-video-wrapper, .site-logo, .icon-item, .portfolio-btn').forEach(el => {
+        document.querySelectorAll('.video-card, .hero-video-wrapper, .sub-hero-video, .site-logo, .portfolio-btn').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(6)');
             el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
         });
